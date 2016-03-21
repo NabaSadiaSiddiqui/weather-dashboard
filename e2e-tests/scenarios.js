@@ -5,37 +5,37 @@
 describe('my app', function() {
 
 
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
+  it('should automatically redirect to /heatAlert when location hash/fragment is empty', function() {
     browser.get('index.html');
-    expect(browser.getLocationAbsUrl()).toMatch("/view1");
+    expect(browser.getLocationAbsUrl()).toMatch("/heatAlert");
   });
 
 
-  describe('view1', function() {
+  describe('heatAlert', function() {
 
     beforeEach(function() {
-      browser.get('index.html#/view1');
+      browser.get('index.html#/heatAlert');
     });
 
 
-    it('should render view1 when user navigates to /view1', function() {
+    it('should render heatAlert when user navigates to /heatAlert', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
+        toMatch(/partial for heat alert view/);
     });
 
   });
 
 
-  describe('view2', function() {
+  describe('extremeHeatAlert', function() {
 
     beforeEach(function() {
-      browser.get('index.html#/view2');
+      browser.get('index.html#/extremeHeatAlert');
     });
 
 
-    it('should render view2 when user navigates to /view2', function() {
+    it('should render extremeHeatAlert when user navigates to /extremeHeatAlert', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
+        toMatch(/partial for extreme heat alert view/);
     });
 
   });

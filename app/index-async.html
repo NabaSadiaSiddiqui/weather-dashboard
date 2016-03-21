@@ -31,8 +31,6 @@
       'bower_components/angular/angular.js',
       'bower_components/angular-route/angular-route.js',
       'app.js',
-      'view1/view1.js',
-      'view2/view2.js',
       'components/version/version.js',
       'components/version/version-directive.js',
       'components/version/interpolate-filter.js'
@@ -45,10 +43,10 @@
   <link rel="stylesheet" href="app.css">
 </head>
 <body ng-cloak>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+  <nav class="{{active}}" ng-click="$event.preventDefault()">
+    <a href="#/heatAlert" class="heatAlert" ng-click="active='heatAlert'">Heat Alert</a>
+    <a href="#/extremeHeatAlert" class="extremeHeatAlert" ng-click="active='extremeHeatAlert'">Extreme Heat Alert</a>
+  </nav>
 
   <div ng-view></div>
 
