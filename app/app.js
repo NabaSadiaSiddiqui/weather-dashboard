@@ -3,10 +3,20 @@
 // Declare app level module which depends on views, and components
 angular.module('weatherDashboard', [
   'ngRoute',
-  'weatherDashboard.heatAlert',
-  'weatherDashboard.extremeHeatAlert',
   'weatherDashboard.version'
-]).
-config(['$routeProvider', function($routeProvider) {
+])
+.controller('GraphsCtrl', function() {
+    this.graph = 'heatAlert';
+
+    this.selectGraph = function(setGraph) {
+      this.graph = setGraph;
+    };
+
+    this.isSelected = function(checkGraph) {
+      return this.graph == checkGraph;
+    }
+
+})
+.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/heatAlert'});
 }]);
