@@ -12,7 +12,7 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body ng-controller="GraphsCtrl as graph">
-  <nav class={{graph.graph}} ng-click="$event.preventDefault()">
+  <nav class={{graph.name}} ng-click="$event.preventDefault()">
     <a href class="heatAlert" ng-click="graph.selectGraph('heatAlert')">Heat Alert</a>
     <a href class="extremeHeatAlert" ng-click="graph.selectGraph('extremeHeatAlert')">Extreme Heat Alert</a>
   </nav>
