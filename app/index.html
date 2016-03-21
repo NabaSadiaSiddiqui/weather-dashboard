@@ -15,10 +15,13 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+  <nav class="{{active}}" ng-click="$event.preventDefault()">
+    <a href="#/heatAlert" class="heatAlert" ng-click="active='heatAlert'">Heat Alert</a>
+    <a href="#/extremeHeatAlert" class="extremeHeatAlert" ng-click="active='extremeHeatAlert'">Extreme Heat Alert</a>
+  </nav>
+
+  <p ng-hide="active">Please click a menu item</p>
+  <p ng-show="active">You chose <b>{{active}}</b></p>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -34,8 +37,8 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
+  <script src="heatAlert/heatAlert.js"></script>
+  <script src="extremeHeatAlert/extremeHeatAlert.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
