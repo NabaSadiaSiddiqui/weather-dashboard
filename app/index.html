@@ -10,29 +10,33 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
 </head>
 <body ng-controller="GraphsCtrl as graph">
-  <nav class={{graph.graph}} ng-click="$event.preventDefault()">
+  <h1>Weather Dashboard</h1>
+  <h2>Annual trend in the number of heat alerts and extreme
+    heat alerts <a href="http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=faf1ebfc2bb31410VgnVCM10000071d60f89RCRD&appInstanceName=default" target="_blank">issued</a> over the last decade by the City of Toronto's Medical Officer
+    of Health.</h2>
+
+  <nav class={{graph.name}} ng-click="$event.preventDefault()">
     <a href class="heatAlert" ng-click="graph.selectGraph('heatAlert')">Heat Alert</a>
     <a href class="extremeHeatAlert" ng-click="graph.selectGraph('extremeHeatAlert')">Extreme Heat Alert</a>
   </nav>
 
-  <div ng-show="graph.isSelected('heatAlert')">
-    <h1>Heat Alert</h1>
-  </div>
-  <div ng-show="graph.isSelected('extremeHeatAlert')">
-    <h1>Extreme Heat Alert</h1>
+  <div>
+    <canvas class="chart chart-line" chart-data="data" chart-labels="labels"
+      chart-click="onClick" chart-hover="onHover" chart-series="series"></canvas>
   </div>
 
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
+  <div id="version">Weather Dashboard: v<span app-version></span></div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/Chart.js/Chart.min.js"></script>
+  <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
   <script src="app.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
