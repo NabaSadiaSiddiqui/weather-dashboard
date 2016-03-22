@@ -1,8 +1,8 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
+  "name": "weather-dashboard",
+  "description": "A time series graph of weather alerts issued by City of Toronto in the last decade",
   "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
+  "homepage": "https://github.com/NabaSadiaSiddiqui/weather-dashboard",
   "license": "MIT",
   "private": true,
   "dependencies": {
