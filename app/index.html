@@ -13,6 +13,11 @@
   <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
 </head>
 <body ng-controller="GraphsCtrl as graph">
+  <h1>Weather Dashboard</h1>
+  <h2>Annual trend in the number of heat alerts and extreme
+    heat alerts <a href="http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=faf1ebfc2bb31410VgnVCM10000071d60f89RCRD&appInstanceName=default" target="_blank">issued</a> over the last decade by the City of Toronto's Medical Officer
+    of Health.</h2>
+
   <nav class={{graph.name}} ng-click="$event.preventDefault()">
     <a href class="heatAlert" ng-click="graph.selectGraph('heatAlert')">Heat Alert</a>
     <a href class="extremeHeatAlert" ng-click="graph.selectGraph('extremeHeatAlert')">Extreme Heat Alert</a>
