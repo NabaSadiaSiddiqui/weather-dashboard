@@ -93,7 +93,7 @@ angular.module('weatherDashboard', [
 .config(['ChartJsProvider', function (ChartJsProvider) {
   // Configure all charts
   ChartJsProvider.setOptions({
-    colours: ['#FF5252', '#FF8A80'],
+    colours: ['#E35885', '#FF8A80'],
     responsive: false
   });
   // Configure all line charts
