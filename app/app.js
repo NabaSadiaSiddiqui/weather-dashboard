@@ -40,6 +40,7 @@ angular.module('weatherDashboard', [
              }
            }
            graph.cleanDataSet();
+           graph.selectGraph(graph.name);
          })
          .error(function(error) {
            console.log(error);
