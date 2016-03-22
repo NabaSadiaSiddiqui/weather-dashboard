@@ -6,26 +6,7 @@ angular.module('weatherDashboard', [
   'weatherDashboard.version',
   'chart.js'
 ])
-.controller("LineCtrl", ['$scope', '$timeout', function ($scope, $timeout) {
-  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-  $scope.series = ['Series A', 'Series B'];
-  $scope.data = [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90]
-  ];
-  $scope.onClick = function (points, evt) {
-    console.log(points, evt);
-  };
-
-  // Simulate async data update
-  $timeout(function () {
-    $scope.data = [
-      [28, 48, 40, 19, 86, 27, 90],
-      [65, 59, 80, 81, 56, 55, 40]
-    ];
-  }, 3000);
-}])
-.controller('GraphsCtrl', ['$http', function($http) {
+.controller('GraphsCtrl', ['$http', '$scope', '$timeout', function($http, $scope, $timeout) {
   /*
    Codes for heat alert: HA, HAE, EHAD
    Codes for extreme heat alert: EHA, HAU, EHAE
@@ -59,7 +40,6 @@ angular.module('weatherDashboard', [
              }
            }
            graph.cleanDataSet();
-           console.log(graph.dataSet);
          })
          .error(function(error) {
            console.log(error);
@@ -80,9 +60,34 @@ angular.module('weatherDashboard', [
   }
   graph.selectGraph = function(setGraph) {
     graph.name = setGraph;
+    var code = graph.name == "heatAlert" ? highAlertCode : extremeHeatAlertCode;
+    $scope.labels = graph.getLabels();
+    $scope.series = [graph.name];
+    $scope.data = [graph.getData(code)];
+    $scope.onClick = function (points, evt) {
+      console.log(points, evt);
+    };
   }
   graph.isSelected = function(checkGraph) {
     return graph.name == checkGraph;
+  }
+  graph.getLabels = function() {
+    var labels = new Set();
+    for(var point in graph.dataSet) {
+      var year = point.split("-")[0];
+      labels.add(year);
+    }
+    return Array.from(labels).reverse();
+  }
+  graph.getData = function(alertCode) {
+    var data = [];
+    for(var point in graph.dataSet) {
+      var alertType = point.split("-")[1];
+      if(alertType == alertCode) {
+        data.push(graph.dataSet[point]);
+      }
+    }
+    return data.reverse();
   }
 }])
 .config(['ChartJsProvider', function (ChartJsProvider) {

@@ -25,15 +25,17 @@
     <h1>Extreme Heat Alert</h1>
   </div>
 
-  <div id="line-chart" ng-controller="LineCtrl">
-    <div class="panel panel-default">
+  <div id="line-chart" ng-controller="GraphsCtrl">
+    <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true"
+      chart-click="onClick" chart-hover="onHover" chart-series="series"></canvas>
+    <!--<div class="panel panel-default">
       <div class="panel-heading">Line Chart</div>
         <div class="panel-body">
             <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true"
               chart-click="onClick" chart-hover="onHover" chart-series="series"></canvas>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 
   <div>Angular seed app: v<span app-version></span></div>
